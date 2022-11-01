@@ -1,0 +1,60 @@
+version: "3.3"
+
+services:
+  kinetic:
+    image: ghcr.io/kin-labs/kinetic:dev
+    restart: unless-stopped
+    container_name: kinetic
+    hostname: kinetic
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+    environment:
+      # See the .env.example file in the GitHub repo for all available options while we work on the docs.
+      # https://github.com/kin-labs/kinetic/blob/dev/.env.example
+      ADMIN_URL: "http://localhost:3000"
+      API_URL: "http://localhost:3000/api"
+      AUTH_PASSWORD_ENABLED: true
+      # Provision users with a coma-separated list.
+      # Each item has the form: <username>|<password>|<role?>:<email?>:<avatarUrl?>
+      # The password is optional, when left blank the user can only login with an external provider.
+      # The role is optional and can be one of: Admin and User (default).
+      # The email is optional and can be used to link an account to external providers.
+      # The avatarUrl is optional and can be used to provision an avatar for the user
+      AUTH_USERS: "admin|kinetic1|Admin"
+      # Provision more apps by providing the byte array of the fee payer, name and optionally a logo URL.
+      APP_1_FEE_PAYER_BYTE_ARRAY: "[24,20,238,188,26,234,120,209,88,63,170,46,66,98,21,113,194,120,143,228,231,37,91,0,242,32,180,99,243,179,57,144,11,233,235,235,203,20,105,33,47,140,152,253,12,148,72,175,141,253,242,110,225,110,21,211,118,87,111,206,208,166,190,78]"
+      APP_1_NAME: "App 1"
+      COOKIE_DOMAINS: "localhost"
+      CORS_BYPASS: true
+      DATABASE_URL: "postgresql://prisma:prisma@postgres:5432/prisma?schema: kinetic"
+      JWT_SECRET: "ENTER_YOUR_SECRET"
+      HOST: 0.0.0.0
+      LOG_LEVEL: ALL
+      # Devnet is enabled by default, you need to explicitly enable mainnet.
+      SOLANA_DEVNET_ENABLED: true
+      SOLANA_MAINNET_ENABLED: false
+    logging:
+      options:
+        max-size: 100m
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: prisma
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0.5-alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./volumes/redis:/data
