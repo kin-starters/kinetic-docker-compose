@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   kinetic:
-    image: ghcr.io/kin-labs/kinetic:dev
+    image: ghcr.io/kin-labs/kinetic:1.0.0-rc.6
     restart: unless-stopped
     container_name: kinetic
     hostname: kinetic
@@ -13,7 +13,6 @@ services:
     environment:
       # See the .env.example file in the GitHub repo for all available options while we work on the docs.
       # https://github.com/kin-labs/kinetic/blob/dev/.env.example
-      ADMIN_URL: "http://localhost:3000"
       API_URL: "http://localhost:3000/api"
       AUTH_PASSWORD_ENABLED: true
       # Provision users with a coma-separated list.
@@ -35,6 +34,7 @@ services:
       # Devnet is enabled by default, you need to explicitly enable mainnet.
       SOLANA_DEVNET_ENABLED: true
       SOLANA_MAINNET_ENABLED: false
+      WEBg_URL: "http://localhost:3000"
     logging:
       options:
         max-size: 100m
