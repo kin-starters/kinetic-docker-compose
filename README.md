@@ -16,7 +16,7 @@ Basic example of a [Kinetic](https://github.com/kin-labs/kinetic) setup using Do
 2. Edit the `environment` section of the `docker-compose.yml` file to configure the Kinetic API
 3. Run `docker-compose up` to start the stack
 4. Navigate to `http://localhost:3000`
-5. login with the credentials you configured in the `docker-compose.yml` file (admin/kinetic1 by default)
+5. login with the credentials you configured in the `docker-compose.yml` file (admin/Kinetic1 by default)
 
 # Support
 
