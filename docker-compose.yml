@@ -29,12 +29,11 @@ services:
       CORS_BYPASS: true
       DATABASE_URL: "postgresql://prisma:prisma@postgres:5432/prisma?schema:kinetic"
       JWT_SECRET: "ENTER_YOUR_SECRET"
-      HOST: 0.0.0.0
       LOG_LEVEL: ALL
       # Devnet is enabled by default, you need to explicitly enable mainnet.
       SOLANA_DEVNET_ENABLED: true
       SOLANA_MAINNET_ENABLED: false
-      WEBg_URL: "http://localhost:3000"
+      WEB_URL: "http://localhost:3000"
     logging:
       options:
         max-size: 100m
