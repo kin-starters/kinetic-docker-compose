@@ -38,9 +38,11 @@ services:
 
   postgres:
     image: postgres:14-alpine
+    restart: unless-stopped
     container_name: postgres
-    ports:
-      - '5432:5432'
+    # Uncomment the following lines to expose the postgres port to the host machine.
+    # ports:
+    #   - '5432:5432'
     environment:
       POSTGRES_DB: prisma
       POSTGRES_USER: prisma
@@ -50,8 +52,10 @@ services:
 
   redis:
     image: redis:7.0.5-alpine
+    restart: unless-stopped
     container_name: redis
-    ports:
-      - 6379:6379
+    # Uncomment the following lines to expose the redis port to the host machine.
+    # ports:
+    #   - '6379:6379'
     volumes:
       - ./volumes/redis:/data
