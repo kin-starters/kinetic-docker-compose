@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   kinetic:
-    image: ghcr.io/kin-labs/kinetic:1.0.0-rc.7
+    image: ghcr.io/kin-labs/kinetic:1.0.0-rc.8
     restart: unless-stopped
     container_name: kinetic
     hostname: kinetic
@@ -25,8 +25,6 @@ services:
       # Provision more apps by providing the byte array of the fee payer, name and optionally a logo URL.
       APP_1_FEE_PAYER_BYTE_ARRAY: "[24,20,238,188,26,234,120,209,88,63,170,46,66,98,21,113,194,120,143,228,231,37,91,0,242,32,180,99,243,179,57,144,11,233,235,235,203,20,105,33,47,140,152,253,12,148,72,175,141,253,242,110,225,110,21,211,118,87,111,206,208,166,190,78]"
       APP_1_NAME: "App 1"
-      COOKIE_DOMAINS: "localhost"
-      CORS_BYPASS: "true"
       DATABASE_URL: "postgresql://prisma:prisma@postgres:5432/prisma?schema:kinetic"
       JWT_SECRET: "ENTER_YOUR_SECRET"
       LOG_LEVEL: "ALL"
@@ -34,7 +32,6 @@ services:
       SOLANA_DEVNET_ENABLED: "true"
       SOLANA_DEVNET_MINT_KIN_AIRDROP_SECRET_KEY: "[24,20,238,188,26,234,120,209,88,63,170,46,66,98,21,113,194,120,143,228,231,37,91,0,242,32,180,99,243,179,57,144,11,233,235,235,203,20,105,33,47,140,152,253,12,148,72,175,141,253,242,110,225,110,21,211,118,87,111,206,208,166,190,78]"
       SOLANA_MAINNET_ENABLED: "false"
-      WEB_URL: "http://localhost:3000"
     logging:
       options:
         max-size: 100m
