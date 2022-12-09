@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   kinetic:
-    image: ghcr.io/kin-labs/kinetic:1.0.0-rc.9
+    image: ghcr.io/kin-labs/kinetic:1.0.0-rc.10
     restart: unless-stopped
     container_name: kinetic
     hostname: kinetic
@@ -16,11 +16,7 @@ services:
       API_URL: "http://localhost:3000/api"
       AUTH_PASSWORD_ENABLED: "true"
       # Provision users with a coma-separated list.
-      # Each item has the form: <username>|<password?>|<role?>:<email?>:<avatarUrl?>
-      # The password is optional, when left blank the user can only log in with an external provider.
-      # The role is optional and can be one of: Admin and User (default).
-      # The email is optional and can be used to link an account to external providers.
-      # The avatarUrl is optional and can be used to provision an avatar for the user
+      # Each item has the form: <username>|<password?>|<role?>|<email?>|<avatarUrl?>
       AUTH_USERS: "admin|Kinetic1|Admin"
       # Provision more apps by providing the byte array of the fee payer, name and optionally a logo URL.
       APP_1_FEE_PAYER_SECRET: "UvfuF3FPqLyvS8xGjSu4AUfdsY5QvLdnin8SKBLAi3UqgbmEWCDshPY3UcxvBgRAqHLzh5Ni1eypLVZArsis6FF"
@@ -28,6 +24,7 @@ services:
       DATABASE_URL: "postgresql://prisma:prisma@postgres:5432/prisma?schema:kinetic"
       JWT_SECRET: "ENTER_YOUR_SECRET"
       LOG_LEVEL: "ALL"
+      REDIS_HOST: "redis"
       # Devnet is enabled by default, you need to explicitly enable mainnet.
       SOLANA_DEVNET_ENABLED: "true"
       SOLANA_DEVNET_MINT_KIN_AIRDROP_SECRET: "UvfuF3FPqLyvS8xGjSu4AUfdsY5QvLdnin8SKBLAi3UqgbmEWCDshPY3UcxvBgRAqHLzh5Ni1eypLVZArsis6FF"
