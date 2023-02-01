@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   kinetic:
-    image: ghcr.io/kin-labs/kinetic:1.0.0-rc.16
+    image: ghcr.io/kin-labs/kinetic:1.0.0-rc.17
     restart: unless-stopped
     container_name: kinetic
     hostname: kinetic
